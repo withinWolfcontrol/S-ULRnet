@@ -60,7 +60,7 @@ class S_ULRnet(nn.Module):
 
 
         # Block 5 (Res-Decoder 1): 对应 Table S2 Block 5 (23x23 -> 23x23)
-        # 注意：代码中保留了 upsample_1 结构，但在 forward 中未使用，符合 Block 5 尺寸未变
+        # 注意：代码中保留了 upsample_1 结构，在 forward 中未使用，符合 Block 5 尺寸未变
         self.transposed_conv_1 = TransposedConvLayer(filters[3], filters[3], 2, 2) 
         self.res_decoder_1_conv = Res_Encoder(filters[3] + filters[2], filters[2], 1, 1)
 
@@ -136,4 +136,5 @@ if __name__ == '__main__':
     
     # device = 'cuda' if torch.cuda.is_available() else 'cpu'
     # model.to(device)
+
     # summary(model, (1, 200, 200))
